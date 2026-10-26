@@ -27,6 +27,7 @@ export const icons = {
   giftCardNav: { source: require('../../assets/icons/gift-card-nav.svg'), width: 21.5, height: 17.5 },
   creditCard: { source: require('../../assets/icons/credit-card.svg'), width: 24, height: 24 },
   circleUser: { source: require('../../assets/icons/circle-user.svg'), width: 24, height: 24 },
+  refreshMark: { source: require('../../assets/icons/refresh-mark.svg'), width: 14.64, height: 17.9614 },
 } as const satisfies Record<string, SizedAsset>;
 
 export const images = {
@@ -37,4 +38,6 @@ export const images = {
   promoWatermark2: { source: require('../../assets/images/promo-watermark-2.svg'), width: 69.9804, height: 20.8309 },
   promoWatermark3: { source: require('../../assets/images/promo-watermark-3.svg'), width: 21.9829, height: 20.9269 },
   navScribble: require('../../assets/images/nav-scribble.svg') as number,
+  // Gradient arc exported as a 2x raster; it has no vector form.
+  refreshRing: { source: require('../../assets/images/refresh-ring.png'), width: 51.24, height: 51.24 },
 } as const;
