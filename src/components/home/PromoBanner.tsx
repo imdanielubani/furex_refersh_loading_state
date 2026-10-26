@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   letterU: { left: '11.54%' },
   letterR: { left: '35.39%' },
   letterE: { left: '58.56%' },
-  letterX: { left: '77.43%' },
+  letterX: { left: '79.43%' },
   watermark: {
     position: 'absolute',
     left: 0,
