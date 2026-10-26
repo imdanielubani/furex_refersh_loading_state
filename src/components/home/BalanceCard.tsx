@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 
 import { BalancePattern } from '@/components/home/BalancePattern';
 import { Icon } from '@/components/ui/Icon';
 import { icons, type SizedAsset } from '@/constants/assets';
 import { colors, type } from '@/constants/theme';
-import { formatNaira } from '@/utils/formatCurrency';
+import { NAIRA_SYMBOL, formatAmount, formatNaira } from '@/utils/formatCurrency';
 
 type BalanceCardProps = {
   balance: number;
@@ -23,7 +23,6 @@ export function BalanceCard({
   onWithdrawPress,
 }: BalanceCardProps) {
   const [isHidden, setIsHidden] = useState(false);
-  const formatted = formatNaira(balance);
 
   return (
     <View style={styles.card}>
@@ -48,9 +47,10 @@ export function BalanceCard({
             <Text
               style={styles.amount}
               numberOfLines={1}
-              accessibilityLabel={isHidden ? 'Balance hidden' : formatted}
+              accessibilityLabel={isHidden ? 'Balance hidden' : formatNaira(balance)}
             >
-              {isHidden ? '₦••••••' : formatted}
+              <Text style={styles.nairaSymbol}>{NAIRA_SYMBOL}</Text>
+              {isHidden ? '••••••' : formatAmount(balance)}
             </Text>
             <Pressable
               onPress={onCurrencyPress}
@@ -156,6 +156,12 @@ const styles = StyleSheet.create({
     fontSize: 23.002,
     letterSpacing: 0.137,
     color: colors.textPrimary,
+  },
+  // Sora has no naira glyph, so pin it to the heavy system sans instead of
+  // whatever fallback each platform would pick.
+  nairaSymbol: {
+    fontFamily: Platform.select({ ios: 'System', android: 'sans-serif', default: 'system-ui, sans-serif' }),
+    fontWeight: '800',
   },
   currencyPill: {
     height: 24.919,
