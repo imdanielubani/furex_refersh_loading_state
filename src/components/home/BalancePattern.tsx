@@ -13,9 +13,7 @@ const PILL_SIZE: Record<PillKind, { width: number; height: number }> = {
 
 const ROW = 45.4557;
 
-// [kind, left, top] in paint order, relative to the overlay. Tall pills are
-// rotated 90° clockwise in the source, so their left edge sits one pill width
-// before their origin.
+
 const PILLS: readonly [PillKind, number, number][] = [
   ['short', 45.571, 0], ['short', 130.784, 0], ['short', 215.998, 0], ['tall', 255.64, 0],
   ['long', 386.424, 0], ['short', 530.546, 0], ['long', 615.76, 0], ['long', 759.881, 0],
@@ -35,7 +33,7 @@ const PILLS: readonly [PillKind, number, number][] = [
   ['long', 504.241, ROW * 7], ['short', 648.363, ROW * 7], ['long', 733.576, ROW * 7], ['tall', 832.127, ROW * 7],
 ];
 
-/** Decorative pill pattern behind the balance. Static, so it never re-renders. */
+
 export const BalancePattern = memo(function BalancePattern() {
   return (
     <View style={styles.overlay}>

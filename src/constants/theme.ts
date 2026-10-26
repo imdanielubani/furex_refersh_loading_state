@@ -1,7 +1,7 @@
 import type { TextStyle } from 'react-native';
 
 export const colors = {
-  background: '#f5f5f5',
+  background: '#F0F0F0',
   headerBackground: '#f8f9fb',
   surface: '#fcfcfc',
   white: '#ffffff',
