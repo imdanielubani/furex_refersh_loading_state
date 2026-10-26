@@ -14,8 +14,7 @@ const SERVICES: { id: ServiceId; label: string; icon: SizedAsset; tint: string }
 ];
 
 const CIRCLE_SIZE = 45;
-// Circle plus the 44pt gap between circles, so labels wider than the circle
-// stay on one line without moving the circles.
+
 const COLUMN_WIDTH = CIRCLE_SIZE + 44;
 
 export function ServiceShortcuts({ onServicePress }: { onServicePress?: (id: ServiceId) => void }) {
@@ -55,8 +54,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    // The design sits the row 6pt right of centre.
-    marginLeft: 12,
+    marginLeft: 1,
   },
   item: {
     width: COLUMN_WIDTH,
