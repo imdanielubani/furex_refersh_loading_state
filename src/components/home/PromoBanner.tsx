@@ -56,9 +56,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: colors.black,
   },
-  // Letters are anchored by their left edge only. Pinning both edges to the
-  // measured glyph width makes native truncate a letter whenever the device
-  // measures the glyph a fraction wider.
+ 
   letter: {
     position: 'absolute',
     top: '-14.91%',
@@ -69,9 +67,9 @@ const styles = StyleSheet.create({
     color: colors.white,
     opacity: WATERMARK_OPACITY,
   },
-  letterU: { left: '17.54%' },
-  letterR: { left: '39.39%' },
-  letterE: { left: '59.56%' },
+  letterU: { left: '11.54%' },
+  letterR: { left: '35.39%' },
+  letterE: { left: '58.56%' },
   letterX: { left: '77.43%' },
   watermark: {
     position: 'absolute',
