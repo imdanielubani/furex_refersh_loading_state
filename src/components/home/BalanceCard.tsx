@@ -50,7 +50,7 @@ export function BalanceCard({
               accessibilityLabel={isHidden ? 'Balance hidden' : formatNaira(balance)}
             >
               <Text style={styles.nairaSymbol}>{NAIRA_SYMBOL}</Text>
-              {isHidden ? '••••••' : formatAmount(balance)}
+              {isHidden ? '*******' : formatAmount(balance)}
             </Text>
             <Pressable
               onPress={onCurrencyPress}
@@ -102,7 +102,6 @@ function ActionButton({ icon, label, onPress, tone = 'white', iconStyle }: Actio
       ]}
     >
       <Icon icon={icon} size={24} style={[styles.noShrink, iconStyle]} />
-      {/* Must not shrink: like the design, a long label overflows into the padding instead of truncating. */}
       <Text style={styles.actionLabel} numberOfLines={1}>
         {label}
       </Text>
@@ -157,8 +156,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.137,
     color: colors.textPrimary,
   },
-  // Sora has no naira glyph, so pin it to the heavy system sans instead of
-  // whatever fallback each platform would pick.
   nairaSymbol: {
     fontFamily: Platform.select({ ios: 'System', android: 'sans-serif', default: 'system-ui, sans-serif' }),
     fontWeight: '800',
@@ -194,7 +191,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 5.479,
-    padding: 10.957,
+    padding: 9.957,
     borderWidth: 0.913,
     borderColor: colors.borderTertiary,
     borderRadius: 999,
@@ -206,7 +203,8 @@ const styles = StyleSheet.create({
   actionLabel: {
     ...type.regular,
     flexShrink: 0,
-    fontSize: 13.418,
+    fontWeight: 900,
+    fontSize: 11.418,
     lineHeight: 20.089,
     letterSpacing: -0.1644,
     color: colors.textSlate,
