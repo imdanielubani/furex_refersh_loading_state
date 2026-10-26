@@ -11,6 +11,7 @@ import Animated, {
   useSharedValue,
   withRepeat,
   withTiming,
+  type AnimatedStyle,
   type SharedValue,
 } from 'react-native-reanimated';
 
@@ -31,7 +32,7 @@ type RefreshIndicatorProps = {
   /** Pull distance at which a refresh is armed; the ring completes its wind-up here. */
   triggerDistance: number;
   refreshing: SharedValue<boolean>;
-  style?: StyleProp<ViewStyle>;
+  style?: StyleProp<AnimatedStyle<ViewStyle>>;
 };
 
 export function RefreshIndicator({ pullDistance, triggerDistance, refreshing, style }: RefreshIndicatorProps) {
