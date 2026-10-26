@@ -14,6 +14,8 @@ export type Promo = {
 
 export const PROMO_BANNER_HEIGHT = 114;
 
+const WATERMARK_OPACITY = 0.1;
+
 export function PromoBanner({ promo, onPress }: { promo: Promo; onPress?: () => void }) {
   return (
     <Pressable
@@ -23,10 +25,10 @@ export function PromoBanner({ promo, onPress }: { promo: Promo; onPress?: () => 
       style={({ pressed }) => [styles.banner, pressed && styles.pressed]}
     >
       <View style={StyleSheet.absoluteFill}>
-        <Text style={[styles.letter, styles.letterU]} numberOfLines={1}>U</Text>
-        <Text style={[styles.letter, styles.letterR]} numberOfLines={1}>R</Text>
-        <Text style={[styles.letter, styles.letterE]} numberOfLines={1}>E</Text>
-        <Text style={[styles.letter, styles.letterX]} numberOfLines={1}>X</Text>
+        <Text style={[styles.letter, styles.letterU]}>U</Text>
+        <Text style={[styles.letter, styles.letterR]}>R</Text>
+        <Text style={[styles.letter, styles.letterE]}>E</Text>
+        <Text style={[styles.letter, styles.letterX]}>X</Text>
         <Image source={images.promoWatermark1.source} style={[styles.watermark, styles.watermark1]} />
         <Image source={images.promoWatermark2.source} style={[styles.watermark, styles.watermark2]} />
         <Image source={images.promoWatermark3.source} style={[styles.watermark, styles.watermark3]} />
@@ -54,24 +56,27 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: colors.black,
   },
+  // Letters are anchored by their left edge only. Pinning both edges to the
+  // measured glyph width makes native truncate a letter whenever the device
+  // measures the glyph a fraction wider.
   letter: {
     position: 'absolute',
     top: '-14.91%',
-    bottom: '-14.04%',
     fontFamily: fonts.montserratBold,
     includeFontPadding: false,
     fontSize: 120.293,
     lineHeight: 147,
-    color: 'rgba(255, 255, 255, 0.07)',
+    color: colors.white,
+    opacity: WATERMARK_OPACITY,
   },
-  letterU: { left: '17.54%', right: '57.19%' },
-  letterR: { left: '39.39%', right: '36.94%' },
-  letterE: { left: '59.56%', right: '18.89%' },
-  letterX: { left: '77.43%', right: '-0.31%' },
+  letterU: { left: '17.54%' },
+  letterR: { left: '39.39%' },
+  letterE: { left: '59.56%' },
+  letterX: { left: '77.43%' },
   watermark: {
     position: 'absolute',
     left: 0,
-    opacity: 0.07,
+    opacity: WATERMARK_OPACITY,
   },
   watermark1: {
     top: '45.14%',
