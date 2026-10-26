@@ -1,9 +1,11 @@
+import * as Haptics from 'expo-haptics';
 import { useCallback, useState, type ReactNode } from 'react';
-import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import { GestureDetector, useNativeGesture, usePanGesture } from 'react-native-gesture-handler';
 import Animated, {
   cancelAnimation,
   scrollTo,
+  useAnimatedReaction,
   useAnimatedRef,
   useAnimatedStyle,
   useScrollOffset,
@@ -25,6 +27,11 @@ const MIN_REFRESH_MS = 800;
 
 const SNAP_TO_HOLD = { duration: 400, dampingRatio: 0.8 } as const;
 const SETTLE = { duration: 400, dampingRatio: 1, overshootClamping: true } as const;
+
+function playArmedHaptic() {
+  if (Platform.OS === 'web') return;
+  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+}
 
 type PullToRefreshScrollViewProps = {
   onRefresh: () => Promise<unknown>;
@@ -106,6 +113,17 @@ export function PullToRefreshScrollView({
       isDragging.set(false);
     },
   });
+
+  // One tap the moment the pull arms, in the same frame the ring finishes winding.
+  useAnimatedReaction(
+    () => isDragging.get() && !isRefreshing.get() && pullDistance.get() >= refreshDistance,
+    (isArmed, wasArmed) => {
+      if (isArmed && wasArmed === false) {
+        scheduleOnRN(playArmedHaptic);
+      }
+    },
+    [refreshDistance],
+  );
 
   const contentStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: pullDistance.get() }],
