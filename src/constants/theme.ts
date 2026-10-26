@@ -16,6 +16,7 @@ export const colors = {
 
   brand: '#ffc700',
   brandAccent: '#ffcc02',
+  pageDot: '#cdcdcd',
   brandPattern: '#ffd027',
   currencyPill: '#c9a519',
 

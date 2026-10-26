@@ -10,8 +10,6 @@ import {
 } from 'react-native';
 
 import { PROMO_BANNER_HEIGHT, PromoBanner, type Promo } from '@/components/home/PromoBanner';
-import { Icon } from '@/components/ui/Icon';
-import { icons } from '@/constants/assets';
 import { colors } from '@/constants/theme';
 
 type PromoCarouselProps = {
@@ -72,7 +70,7 @@ function PageDots({ count, activeIndex }: { count: number; activeIndex: number }
         index === activeIndex ? (
           <View key={index} style={styles.activeDot} />
         ) : (
-          <Icon key={index} icon={icons.pageDot} />
+          <View key={index} style={styles.dot} />
         ),
       )}
     </View>
@@ -95,6 +93,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 16,
+  },
+  dot: {
+    width: 9.258,
+    height: 9.258,
+    borderRadius: 4.629,
+    backgroundColor: colors.pageDot,
   },
   activeDot: {
     width: 12,

@@ -22,7 +22,6 @@ export const icons = {
   giftCard: { source: require('../../assets/icons/gift-card.svg'), width: 21.5, height: 17.5 },
   invoice: { source: require('../../assets/icons/invoice-04.svg'), width: 21.5002, height: 21.5 },
   analyticsUp: { source: require('../../assets/icons/analytics-up.svg'), width: 20.5, height: 20.5 },
-  pageDot: { source: require('../../assets/icons/page-dot.svg'), width: 9.25833, height: 9.25833 },
   furexMark: { source: require('../../assets/icons/furex-mark.svg'), width: 21.5, height: 26.3777 },
   wallet: { source: require('../../assets/icons/wallet.svg'), width: 24, height: 24 },
   giftCardNav: { source: require('../../assets/icons/gift-card-nav.svg'), width: 21.5, height: 17.5 },
