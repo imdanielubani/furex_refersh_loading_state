@@ -16,12 +16,10 @@ export const colors = {
 
   brand: '#ffc700',
   brandAccent: '#ffcc02',
-  // #fff6c5 at 20% over the brand yellow, pre-blended so the balance card
-  // pattern needs no offscreen alpha compositing.
   brandPattern: '#ffd027',
   currencyPill: '#c9a519',
 
-  borderTertiary: '#f1f5f9',
+  borderTertiary: '#e5e6e7',
   borderYellowish: '#f6f6f3',
   avatarPlaceholder: '#d9d9d9',
   navButton: 'rgba(71, 71, 71, 0.37)',
@@ -32,7 +30,7 @@ export const colors = {
   serviceRate: 'rgba(18, 115, 109, 0.08)',
 } as const;
 
-// Keys match the names registered with useFonts in the root layout.
+
 export const fonts = {
   regular: 'Sora_400Regular',
   semiBold: 'Sora_600SemiBold',
@@ -41,8 +39,7 @@ export const fonts = {
   montserratBold: 'Montserrat_700Bold',
 } as const;
 
-// Custom fonts carry their weight in the family name, so fontWeight is never
-// set. includeFontPadding keeps Android line boxes in line with iOS.
+
 export const type = {
   regular: { fontFamily: fonts.regular, includeFontPadding: false },
   semiBold: { fontFamily: fonts.semiBold, includeFontPadding: false },
