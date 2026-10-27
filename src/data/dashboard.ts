@@ -37,7 +37,7 @@ export const initialDashboard: Dashboard = {
   promos,
 };
 
-const SIMULATED_LATENCY_MS = 1200;
+const SIMULATED_LATENCY_MS = 2000;
 
 /** Stands in for the dashboard request; resolves with the same data after a network-like delay. */
 export async function fetchDashboard(): Promise<Dashboard> {

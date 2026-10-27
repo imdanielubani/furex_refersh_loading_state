@@ -23,7 +23,7 @@ const INDICATOR_TOP = 20;
 const INDICATOR_GAP_BELOW = 21;
 const PULL_LIMIT = 240;
 // Keeps the indicator up long enough to read as a refresh, even when the data is instant.
-const MIN_REFRESH_MS = 800;
+const MIN_REFRESH_MS = 1000;
 
 const SNAP_TO_HOLD = { duration: 400, dampingRatio: 0.8 } as const;
 const SETTLE = { duration: 400, dampingRatio: 1, overshootClamping: true } as const;

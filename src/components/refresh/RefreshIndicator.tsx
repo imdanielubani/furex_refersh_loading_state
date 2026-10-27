@@ -21,9 +21,10 @@ import { colors } from '@/constants/theme';
 export const REFRESH_INDICATOR_SIZE = 61;
 
 const RING_INSET = (REFRESH_INDICATOR_SIZE - images.refreshRing.width) / 2;
-// Ring angles from the two pull frames: it winds counter-clockwise as the pull arms.
+// The ring winds clockwise as the pull arms, through the same 67.13° sweep
+// as the two pull frames.
 const RING_ANGLE_AT_REST = 54.47;
-const RING_ANGLE_ARMED = -12.66;
+const RING_ANGLE_ARMED = 121.6;
 const SPIN_DURATION = 1000;
 
 type RefreshIndicatorProps = {
@@ -47,7 +48,7 @@ export function RefreshIndicator({ pullDistance, triggerDistance, refreshing, st
       if (reduceMotion) {
         pulse.set(withRepeat(withTiming(0.5, { duration: 600, easing: Easing.inOut(Easing.ease) }), -1, true));
       } else {
-        spin.set(withRepeat(withTiming(-360, { duration: SPIN_DURATION, easing: Easing.linear }), -1, false));
+        spin.set(withRepeat(withTiming(360, { duration: SPIN_DURATION, easing: Easing.linear }), -1, false));
       }
     },
     [reduceMotion],
